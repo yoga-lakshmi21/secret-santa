@@ -72,6 +72,13 @@ John Doe,john@example.com,Jane Smith,jane@example.com
 
 ## ⚙️ Installation & Setup
 
+##  Git Workflow
+
+- Created a separate branch (`secret-santa`) for development
+- Maintained clean commits
+- Set the branch as default for the project
+- Code pushed to GitHub repository
+
 ### 1. Clone the repository
 
 git clone https://github.com/yoga-lakshmi21/secret-santa.git
