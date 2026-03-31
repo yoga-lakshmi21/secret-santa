@@ -1,21 +1,19 @@
 # 🎁 Secret Santa Assignment
 
 ## 📌 Overview
-This project automates the Secret Santa assignment process for employees.  
-Each employee is assigned another employee as their "Secret Child" based on specific constraints.
+This is a full stack Secret Santa application that allows users to upload employee CSV files via a web interface and generates assignments using a backend API.
 
 ---
 
 ## 🚀 Features
-- Reads employee data from CSV file
-- Supports previous year assignment constraints
-- Ensures:
-  - No employee is assigned to themselves
-  - No employee gets the same person as last year
-  - Each employee gets exactly one unique secret child
-- Generates output CSV with assignments
-- Handles invalid inputs and edge cases
-- Modular and clean code structure (OOP principles)
+- Upload employee CSV files through UI
+- Upload previous year assignment file
+- Backend API to process CSV data
+- Prevent self-assignment
+- Avoid previous year assignments
+- Generate Secret Santa mapping
+- Display results in a table (frontend)
+- Supports both CLI and API-based execution
 
 ---
 
@@ -24,19 +22,19 @@ Each employee is assigned another employee as their "Secret Child" based on spec
 secret-santa/
 │
 ├── src/
-│ ├── models/
-│ ├── services/
-│ ├── utils/
-│ ├── validators/
-│ └── index.js
+│   ├── models/
+│   ├── services/
+│   ├── utils/
+│   ├── validators/
+│   ├── index.js        (CLI version)
+│   └── server.js       (API version)
+│
+├── frontend/
+│   ├── src/
+│   │   └── App.js
 │
 ├── data/
-│ ├── employees.csv
-│ └── lastYear.csv
-│
 ├── output/
-│ └── result.csv
-│
 └── README.md
 
 
@@ -72,23 +70,36 @@ John Doe,john@example.com,Jane Smith,jane@example.com
 
 ## ⚙️ Installation & Setup
 
-##  Git Workflow
+### Backend (API)
 
-- Created a separate branch (`secret-santa`) for development
+cd secret-santa
+npm install
+node src/server.js
+
+### Frontend (React)
+
+cd secret-santa-frontend
+npm install
+npm start
+
+## 🌿 Git Workflow
+
+- Used separate branches for backend and frontend development
 - Maintained clean commits
-- Set the branch as default for the project
-- Code pushed to GitHub repository
+- Set branches as default for respective repositories
+- Pushed code to GitHub
+
 
 ### 1. Clone the repository
 
-git clone https://github.com/yoga-lakshmi21/secret-santa.git
-cd secret-santa
-
+Backend - git clone https://github.com/yoga-lakshmi21/secret-santa.git
+Frontend - git clone https://github.com/yoga-lakshmi21/secret-santa-frontend.git
 
 ### 2. Install dependencies
 
 npm install
 
+For CLI Method:
 
 ### 3. Add input files
 Place your CSV files inside:
@@ -96,13 +107,34 @@ Place your CSV files inside:
 data/employees.csv
 data/lastYear.csv
 
+For API integration Method:
+
+Upload both CSV files and click the "Generate" button
+
 
 ### 4. Run the application
 
+### ▶️ Run Backend (API Mode)
+node src/server.js
+
+### ▶️ Run CLI Mode (Optional)
 node src/index.js
+
+### ▶️ Run Frontend 
+ npm start
 
 
 ---
+
+## 🔗 API Endpoint
+
+POST /generate
+
+- Accepts:
+  - employees.csv
+  - lastYear.csv
+- Returns:
+  - Secret Santa assignments in JSON format
 
 ## ✅ Assumptions
 - Each employee has a unique email ID
@@ -131,8 +163,6 @@ node src/index.js
 
 ## 🧪 Future Improvements
 - Add unit tests using Jest
-- Add frontend UI for file upload
-- Convert to API-based service
 - Add logging system
 
 ---
